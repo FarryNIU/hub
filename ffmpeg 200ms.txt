@@ -1,0 +1,22 @@
+ffmpeg -f dshow -i video="VID.mp4" -b:v 100k -bufsize 1000k -vcodec libx264 -preset:v ultrafast -tune:v zerolatency -f flv rtmp://121.36.222.36:24807/vis/aaaa
+
+ffmpeg -re -i VID.mp4 -f flv rtmp://119.3.211.34:22752/vis/aaa
+
+ffmpeg -re -f dshow  -i video="USB Camera" -bufsize 1000000k -vf scale=200:100 -vcodec libx264 -preset:v ultrafast -tune:v zerolatency -f flv rtmp://119.3.211.34:22752/vis/aaa
+
+ffmpeg -i https://078dda04fc284058940039ebb5d0de25.apigw.cn-north-4.huaweicloud.com/live/work002?app=vis&stream=jjj -c copy -f flv filename
+
+https://078dda04fc284058940039ebb5d0de25.apigw.cn-north-4.huaweicloud.com/live/work002?app=vis&stream=aaa
+
+ffmpeg -f video4linux2  -framerate 25 -video_size 640x480 -i video="USB Camera" -vcodec libx264 -preset ultrafast -acodec libfaac -f flv  rtmp://119.3.211.34:22752/vis/aaa
+[5s]ffmpeg -f dshow -framerate 25 -video_size 640*480 -i video="USB Camera" -bufsize 1000000k -vcodec libx264 -preset:v ultrafast -tune:v zerolatency -acodec libfaac -f flv rtmp://119.3.211.34:22752/vis/aaa
+
+[pull 2s]ffplay -i  "https://078dda04fc284058940039ebb5d0de25.apigw.cn-north-4.huaweicloud.com/live/work002?app=vis&stream=aaa" -fflags nobuffer
+
+
+
+
+
+
+
+ffmpeg -f dshow -i video="USB Camera" -bufsize 1000000k -vf scale=200:100 -vcodec libx264 -preset:v ultrafast -tune:v zerolatency -acodec libfaac -f flv rtmp://119.3.211.34:22752/vis/aaa
